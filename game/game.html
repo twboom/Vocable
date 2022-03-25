@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} - Vocable</title>
+</head>
+<body>
+    <header>
+        <h1>Vocable</h1>
+        <h2>{title}</h2>
+    </header>
+
+    <main>
+        <div class="hint">
+            <h3 class="hint">Hint</h3>
+            <p id="hint"></p>
+            <p id="comment"></p>
+        </div>
+
+        <div id="game">
+            <div id="field"></div>
+            <div id="keyboard"></div>
+        </div>
+    </main>
+
+    <script type="module">
+        const words = [{"word": "absent-minded", "translation": "afwezig", "comment": ""}, {"word": "broad-minded", "translation": "ruimdenkend", "comment": ""}, {"word": "coexist", "translation": "naast elkaar bestaan", "comment": ""}, {"word": "cooperative", "translation": "co\u00f6peratief", "comment": ""}, {"word": "bias", "translation": "vooroordeel", "comment": ""}, {"word": "distortion", "translation": "vervorming", "comment": ""}, {"word": "hierarchy", "translation": "hi\u00c3\u00abrarchie", "comment": ""}, {"word": "misinformation", "translation": "desinformatie", "comment": ""}, {"word": "mistrust", "translation": "wantrouwen", "comment": ""}, {"word": "mode", "translation": "modus", "comment": ""}, {"word": "multitask", "translation": "multitasken", "comment": ""}, {"word": "nap", "translation": "(een) dutje doen", "comment": "(n,v)"}, {"word": "overestimate", "translation": "overschatten", "comment": ""}, {"word": "prejudice", "translation": "vooroordeel", "comment": ""}, {"word": "pseudo-fact", "translation": "pseudofeit", "comment": ""}, {"word": "self-imposed", "translation": "zelfopgelegd", "comment": ""}, {"word": "tough-minded", "translation": "keihard", "comment": ""}, {"word": "tremendously", "translation": "enorm", "comment": ""}, {"word": "underestimate", "translation": "onderschatten", "comment": ""}, {"word": "understatement", "translation": "understatement", "comment": ""}, {"word": "accomplish", "translation": "bereiken", "comment": ""}, {"word": "accurate/inaccurate", "translation": "juist / onjuist", "comment": ""}, {"word": "boost", "translation": "stimuleren", "comment": ""}, {"word": "disclose", "translation": "openbaren", "comment": ""}, {"word": "diversity", "translation": "verscheidenheid", "comment": ""}, {"word": "engaging", "translation": "innemend", "comment": ""}, {"word": "escalator", "translation": "roltrap", "comment": ""}, {"word": "incentive", "translation": "aansporing", "comment": ""}, {"word": "intriguing", "translation": "intrigerend", "comment": ""}, {"word": "limp", "translation": "hinken", "comment": ""}, {"word": "negate", "translation": "ontkennen", "comment": ""}, {"word": "predecessor", "translation": "voorganger", "comment": ""}, {"word": "prevention", "translation": "preventie", "comment": ""}, {"word": "prohibitive", "translation": "belemmerend", "comment": ""}, {"word": "pursue", "translation": "achtervolgen", "comment": ""}, {"word": "straightforward", "translation": "rechtdoorzee", "comment": ""}, {"word": "strenuous", "translation": "inspannend", "comment": ""}, {"word": "stride", "translation": "wandelen", "comment": ""}, {"word": "stroll", "translation": "slenteren", "comment": ""}, {"word": "taxpayer", "translation": "belastingbetaler", "comment": ""}, {"word": "misleading", "translation": "misleidend", "comment": ""}, {"word": "exponentially", "translation": "exponentieel", "comment": ""}, {"word": "generate", "translation": "genereren", "comment": ""}, {"word": "accurate/inaccurate", "translation": "juist / onjuist", "comment": ""}, {"word": "biased", "translation": "vooringenomen", "comment": ""}, {"word": "exploitation", "translation": "exploitatie", "comment": ""}, {"word": "impartial", "translation": "onpartijdig", "comment": ""}, {"word": "readership", "translation": "lezerspubliek", "comment": ""}, {"word": "unedited", "translation": "ongecorrigeerd", "comment": ""}, {"word": "accurate/inaccurate", "translation": "juist / onjuist", "comment": ""}, {"word": "frivolous", "translation": "frivool,lichtzinnig", "comment": ""}, {"word": "misleading", "translation": "misleidend", "comment": ""}, {"word": "objective", "translation": "objectief", "comment": ""}, {"word": "objectivity", "translation": "objectiviteit", "comment": ""}, {"word": "out-of-date", "translation": "uit de tijd", "comment": ""}, {"word": "reliability", "translation": "betrouwbaarheid", "comment": ""}, {"word": "reliable/unreliable", "translation": "betrouwbaar / onbetrouwbaar", "comment": ""}, {"word": "assertion", "translation": "bewering", "comment": ""}, {"word": "censor", "translation": "censureren", "comment": ""}, {"word": "censorship", "translation": "censuur", "comment": ""}, {"word": "embrace", "translation": "omarmen", "comment": ""}, {"word": "extensively", "translation": "uitgebreid", "comment": ""}, {"word": "headache", "translation": "hoofdpijn", "comment": ""}, {"word": "insoluble", "translation": "onoplosbaar", "comment": ""}, {"word": "pertinent", "translation": "relevant", "comment": ""}, {"word": "reliable/unreliable", "translation": "betrouwbaar / onbetrouwbaar", "comment": ""}, {"word": "view", "translation": "gezichtspunt", "comment": ""}];
+
+        import { Game } from './js/game.js';
+        
+        // Initialize the game
+        const game = new Game(words);
+
+        // Start the game
+        game.start();
+    </script>
+</body>
+</html>
