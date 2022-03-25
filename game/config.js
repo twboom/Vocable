@@ -11,7 +11,7 @@ o.keys = {
     'backspace': 'backspace',
     'delete': 'delete',
 }
-o.inputKeys = [o.letters, o.characters]
+o.inputKeys = [o.letters, o.characters].flat();
 o.allowedKeys = [o.letters, o.characters, Object.values(o.keys)].flat()
 o.specialKeys = {
     [o.keys.backspace]: 'remove',
@@ -23,5 +23,6 @@ o.rows = [
     'asdfghjkl'.split(''),
     [o.keys.enter, 'zxcvbnm'.split(''), o.keys.backspace].flat(),
 ]
+o.delay = 100;
 
 export const config = o;

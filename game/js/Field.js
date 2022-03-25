@@ -21,6 +21,9 @@ export class Field {
 
         // Regenerate the field
         this.generate();
+
+        // Update the hint
+        this.updateHint(word);
     };
 
     // Input from the keyboard
@@ -36,6 +39,16 @@ export class Field {
             // Play the guess
             this.playGuess();
         }
+    };
+
+    updateHint(word) {
+        // Hint
+        const hint = document.getElementById('hint'); // Get the hint element
+        hint.innerHTML = word.translation; // Update the hint
+
+        // Comment
+        const comment = document.getElementById('comment'); // Get the comment element
+        comment.innerHTML = word.comment; // Update the comment
     };
 
     // Generate the field
@@ -77,7 +90,76 @@ export class Field {
 
     // Play this guess
     // Gets the results and displays them
-    playGuess() {};
+    playGuess() {
+        // Get the guess
+        const guess = document.getElementsByClassName('guess')[this.currentGuess]; // The guess
+        const letterElements = guess.children; // The letters in the guess
+        const letters = Array.from(letterElements).map(letter => letter.firstChild.innerHTML); // The letters in the guess
+
+        // Check if all letters are filled
+        let allLetters = true;
+        for (let i = 0; i < letters.length; i++) {
+            if (letters[i] == '') { allLetters = false; break };
+        };
+
+        // TODO: DIsplay not all letters are filled
+        if (!allLetters) { return };
+
+        // Display the results
+
+        let leftOverLetters = this.letters; // The letters left in the word
+        let letterStates = []; // The state of each letter
+        
+        // Loop over the letters in the word to get the letter states
+        for (let i = 0; i < this.length; i++) {
+            // Get the letter
+            const letter = this.letters[i];
+
+            // Check if the letter is in the guess
+            if (letters[i] === letter) { // The letter is in the guess
+                letterStates.push('correct');
+            } else if (leftOverLetters.includes(letter)) { // The letter is in the guess but not in the right position
+                letterStates.push('contains');
+            } else { // The letter is not in the guess
+                leftOverLetters.splice(leftOverLetters.indexOf(letter), 1);
+                letterStates.push('wrong');
+            };
+        };
+
+        // Add the states to the elements
+        let currentLetter = 0;
+        const totalDelay =  config.delay * letters.length;
+
+        // Function to add the states to the elements
+        function renderLetter() {
+            const letter = letterElements[currentLetter]; // Get the letter
+            const state = letterStates[currentLetter]; // Get the state
+            letter.dataset.state = state; // Add the state to the letter
+            currentLetter++; // Update the counter
+
+            // Set the timeout
+            // If there are letters left
+            if (!(currentLetter >= letterElements.length)) {
+                // Set the timeout
+                setTimeout(renderLetter, config.delay);
+            };
+        };
+
+        // Render the letters
+        renderLetter();
+
+        // Timout for triggering scenerio's
+        setTimeout(_ => {
+            if (this.word.word === letters.join('')) { // The guess is correct
+                this.win(this.currentGuess + 1); // Win the game
+            } else if (this.currentGuess + 1 == config.maxGuesses) { // The guess is incorrect and there are no more guesses left
+                this.lose(); // Trigger the lose scenario
+            } else { // The guess is incorrect and there are more guesses left
+                this.currentGuess++; // Update the current guess
+                this.currentLetter = 0; // Reset the current letter
+            }
+        }, totalDelay)
+    };
 
     // Adds a letter in this guess
     // Only if possible!
@@ -120,8 +202,8 @@ export class Field {
     };
 
     // Win scenario
-    win() {};
+    win(guesses) { this.game.win(guesses) };
 
     // Lose scenario
-    lose() {};
+    lose() { this.game.lose() };
 };

@@ -25,7 +25,7 @@ export class Game {
     };
 
     // Win scenario
-    win() {
+    win(guesses) {
         // TODO
         this.next();
         console.log(`Won in ${guesses} guesses`);
