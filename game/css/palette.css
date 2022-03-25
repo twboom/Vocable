@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+:root {
+    --font-big: 'Bree Serif';
+    --font-normal: 'Open Sans';
+    --font-letter: 'Bebas Neue';
+
+    --color-correct: #538D4E;
+    --color-contains: #FFCD00;
+    --color-wrong: #3d3d3d;
+    --color-not-guessed: #888888;
+
+    --border-width: 2px;
+
+    --border-empty: var(--border-width) solid #313131;
+    --border-not-empty: var(--border-width) solid #4e4e4e;
+
+    --text: black;
+    --text-letters: black;
+    --text-guessed: white;
+
+    --background-color: #f5f5f5;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --border-empty: var(--border-width) solid #313131;
+        --border-not-empty: var(--border-width) solid #4e4e4e;
+        
+        --text: white;
+        --text-letters: white;
+        --text-guessed: white;
+        
+        --background-color: #1d1d1d;
+    }
+}

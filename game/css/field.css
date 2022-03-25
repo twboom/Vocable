@@ -1,0 +1,75 @@
+div#game {
+    width: 600px;
+    min-width: fit-content;
+    height: 75vh;
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+div#field {
+    text-align: center;
+}
+
+div.letter-container { 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: calc(var(--border-width) + 2px);
+
+    font-size: 48px;
+
+    --size: 60px;
+    width: var(--size);
+    height: var(--size);
+
+    outline: var(--border-empty);
+
+    color: black;
+}
+
+p.letter {
+    display: inline;
+
+    color: var(--text-letters);
+    font-family: var(--font-letter);
+
+    position: relative;
+    top: 0.05em;
+    
+    user-select: none;
+    margin: 0;
+
+    --size: 60px;
+    width: var(--size);
+    height: var(--size);
+}
+
+/* Fix allignment issues when cell is empty */
+p.letter:empty::before {
+    content: "_";
+    opacity: 0
+}
+
+/* Colors */
+div.letter-container[data-state=correct] {
+    outline: none;
+    background-color: var(--color-correct);
+}
+
+div.letter-container[data-state=contains] {
+    outline: none;
+    background-color: var(--color-contains);
+}
+
+div.letter-container[data-state=wrong] {
+    outline: none;
+    background-color: var(--color-wrong);
+}

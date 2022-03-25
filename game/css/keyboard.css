@@ -1,0 +1,25 @@
+div#keyboard { 
+    text-align: center;
+}
+
+p.key {
+    display: inline-block;
+    font-family: var(--font-letter);
+    font-size: 1.5em;
+
+    padding: 16px;
+    margin: 4px;
+
+    border-radius: 2px;
+
+    background-color: var(--color-not-guessed);
+
+    user-select: none;
+    cursor: pointer;
+
+    transition: filter 0.1s;
+}
+
+p.key:hover {
+    filter: brightness(1.05);
+}
