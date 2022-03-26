@@ -30,6 +30,7 @@ export class Field {
     input(key) {
         // Check if the key is a letter or a special key
         if (config.inputKeys.includes(key)) {
+            if (key === ' ') { key = '_' }; // Replace space with underscore
             // Add the letter
             this.addLetter(key);
         } else if (config.specialKeys[key] === 'remove') {

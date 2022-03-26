@@ -3,7 +3,7 @@ const o = {};
 o.maxGuesses = 6
 o.alphabet = 'abcdefghijklmnopqrstuvwxyz'
 o.letters = o.alphabet.split('')
-o.charactersList = '-/'
+o.charactersList = '-/ '
 o.characters = o.charactersList.split('')
 o.keys = {
     'enter': 'enter',
