@@ -60,16 +60,42 @@ p.letter:empty::before {
 
 /* Colors */
 div.letter-container[data-state=correct] {
-    outline: none;
-    background-color: var(--color-correct);
+    --state: var(--color-correct);
 }
 
 div.letter-container[data-state=contains] {
-    outline: none;
-    background-color: var(--color-contains);
+    --state: var(--color-contains);
 }
 
 div.letter-container[data-state=wrong] {
+    --state: var(--color-wrong);
+}
+
+div.letter-container[data-state] {
+    animation: flip-letter 200ms ease-in-out;
     outline: none;
-    background-color: var(--color-wrong);
+    background-color: var(--state);
+}
+
+/* Animations */
+@keyframes flip-letter {
+    0% {
+        transform: scaleX(1);
+        outline: var(--border-empty);
+        background-color: var(--background-color);
+    }
+
+    49% {
+        outline: var(--border-empty);
+        background-color: var(--background-color);
+    }
+
+    50% {
+        transform: scaleX(0);
+        background-color: var(--state);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
 }
