@@ -34,7 +34,16 @@ export class Keyboard {
     // Handles the keydown events
     handleKeyDown(evt) {
         // Get the key
-        const key = evt.key.toLowerCase();
+        let key = evt.key.toLowerCase();
+
+        // Update key if it is a dead key
+        if (key === 'dead') {
+            key = evt.code.toLowerCase();
+        };
+        
+        if (config.keyTranslations[key]) {
+            key = config.keyTranslations[key];
+        };
 
         // Check if the key is allowed
         if (config.allowedKeys.includes(key)) {

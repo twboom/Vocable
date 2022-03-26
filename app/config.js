@@ -3,7 +3,7 @@ const o = {};
 o.maxGuesses = 6
 o.alphabet = 'abcdefghijklmnopqrstuvwxyz'
 o.letters = o.alphabet.split('')
-o.charactersList = '-/ '
+o.charactersList = `-/ '!()`
 o.characters = o.charactersList.split('')
 o.keys = {
     'enter': 'enter',
@@ -18,12 +18,15 @@ o.specialKeys = {
     [o.keys.delete]: 'remove',
     [o.keys.enter]: 'play',
 }
+o.keyTranslations = {
+    'quote': '\'',
+}
 o.rows = [
     'qwertyuiop'.split(''),
     'asdfghjkl'.split(''),
     [o.keys.enter, 'zxcvbnm'.split(''), o.keys.backspace].flat(),
 ]
-o.delay = 100;
-o.defaultDelay = 500;
+o.delay = 50;
+o.defaultDelay = 200;
 
 export const config = o;
