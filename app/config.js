@@ -24,5 +24,6 @@ o.rows = [
     [o.keys.enter, 'zxcvbnm'.split(''), o.keys.backspace].flat(),
 ]
 o.delay = 100;
+o.defaultDelay = 500;
 
 export const config = o;

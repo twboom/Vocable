@@ -131,7 +131,7 @@ export class Field {
 
         // Add the states to the elements
         let currentLetter = 0;
-        const totalDelay =  config.delay * letters.length;
+        const totalDelay =  config.delay * letters.length + config.defaultDelay;
 
         // Function to add the states to the elements
         function renderLetter() {
