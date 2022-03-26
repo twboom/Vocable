@@ -9,10 +9,7 @@ def build_game_page(file) -> str:
     :return: The HTML code of the page.
     """
     # Import the file
-    lines = read(file["path"], header=True, seperator=";")
-    
-    # Ignore words with spaces
-    wordList = [line for line in lines if " " not in line["word"]]
+    wordList = read(file["path"], header=True, seperator=";")
 
     # Get the template
     with open("app/game.html", "r", encoding="utf-8") as f:
@@ -28,8 +25,6 @@ def build_game_page(file) -> str:
     # Replace the template
     template = template.replace("{words}", str(wordList))
     template = template.replace("{title}", title)
-
-    print(file)
 
     # Fix encoding errors
     template = fix_errors(template)
