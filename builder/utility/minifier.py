@@ -43,6 +43,14 @@ def html(html):
     """
     Minify the HTML
     """
-    html = html.replace('\n', '')
     html = html.replace('    ', '')
+    lines = html.split("\n")
+    for i in range(len(lines)):
+        line = lines[i]
+        line = line.strip()
+        if line.startswith("//"):
+            line = ""
+        lines[i] = line
+    html = "\n".join(lines)
+    html = html.replace('\n', '')
     return html
