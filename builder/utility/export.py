@@ -1,5 +1,8 @@
 import os
 
+from builder.utility.include import css as include_css
+from builder.utility.minifier import html as minify_html
+
 
 def export_game_page(file, html):
     """
@@ -13,6 +16,10 @@ def export_game_page(file, html):
     # Create the folder
     os.makedirs(path, exist_ok=True)
     file_name = file["name"].replace(".csv", ".html")
+
+    # Include CSS
+    html = include_css(html)
+    # html = minify_html(html)
 
     # Write the file
     with open(f"{path}/{file_name}", "w", encoding="utf-8") as f:
