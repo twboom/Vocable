@@ -19,7 +19,7 @@ def export_game_page(file, html):
 
     # Include CSS
     html = include_css(html)
-    # html = minify_html(html)
+    html = minify_html(html)
 
     # Write the file
     with open(f"{path}/{file_name}", "w", encoding="utf-8") as f:
