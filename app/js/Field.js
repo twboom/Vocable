@@ -172,10 +172,12 @@ export class Field {
 
         // Get the letter
         const guess = document.getElementsByClassName('guess')[this.currentGuess]; // The guess
-        const letterContainer = guess.children[this.currentLetter].firstChild; // The letter element
+        const letterContainer = guess.children[this.currentLetter]; // The letter container
+        const letterElement = letterContainer.firstChild; // The letter element
         
         // Update the letter
-        letterContainer.innerHTML = letter;
+        letterContainer.dataset.letter = letter;
+        letterElement.innerHTML = letter;
 
         // Update the counters
         // Only if the letter is not the last one
@@ -198,10 +200,11 @@ export class Field {
         // Get the letter
         const guess = document.getElementsByClassName('guess')[this.currentGuess]; // The guess
         const letterContainer = guess.children[this.currentLetter]; // The letter in the guess
-        const letter = letterContainer.firstChild; // The letter
+        const letterElement = letterContainer.firstChild; // The letter
 
         // Update the letter
-        letter.innerHTML = '';
+        letterContainer.removeAttribute('data-letter');
+        letterElement.innerHTML = '';
     };
 
     // Win scenario

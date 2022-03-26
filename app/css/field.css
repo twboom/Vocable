@@ -58,6 +58,11 @@ p.letter:empty::before {
     opacity: 0
 }
 
+/* Animation on letter add */
+div.letter-container[data-letter] {
+    animation: add_letter 100ms ease-in-out;
+}
+
 /* Colors */
 div.letter-container[data-state=correct] {
     --state: var(--color-correct);
@@ -97,5 +102,16 @@ div.letter-container[data-state] {
 
     100% {
         transform: scaleX(1);
+    }
+}
+
+
+@keyframes add_letter {
+    0% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }
