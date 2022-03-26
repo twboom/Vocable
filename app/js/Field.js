@@ -107,21 +107,23 @@ export class Field {
 
         // Display the results
 
-        let leftOverLetters = this.letters; // The letters left in the word
+        let leftOverLetters = this.word.word.split(''); // The letters left in the word
+        console.log(leftOverLetters)
         let letterStates = []; // The state of each letter
         
         // Loop over the letters in the word to get the letter states
         for (let i = 0; i < this.length; i++) {
-            // Get the letter
-            const letter = this.letters[i];
+            const letter = letters[i]; // Letter from input
+            const correct = this.word.word[i]; // Correct letter from word
 
-            // Check if the letter is in the guess
-            if (letters[i] === letter) { // The letter is in the guess
+            if (letter === correct) { // Checks if letter is correct
                 letterStates.push('correct');
-            } else if (leftOverLetters.includes(letter)) { // The letter is in the guess but not in the right position
-                letterStates.push('contains');
-            } else { // The letter is not in the guess
                 leftOverLetters.splice(leftOverLetters.indexOf(letter), 1);
+            } else if (leftOverLetters.includes(letter)) { // Checks if letter is left in word
+                letterStates.push('contains');
+                // Remove letter from left over letters
+                leftOverLetters.splice(leftOverLetters.indexOf(letter), 1);
+            } else { // Letter is not in word
                 letterStates.push('wrong');
             };
         };
