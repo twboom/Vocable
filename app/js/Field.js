@@ -16,6 +16,7 @@ export class Field {
 
         // Update the word
         this.word = word;
+        this.formatted = word.word.replaceAll(" ", "_"); // Replace spaces with underscores
         this.letters = word.word.split('');
         this.length = word.word.length;
 
@@ -109,13 +110,12 @@ export class Field {
         // Display the results
 
         let leftOverLetters = this.word.word.split(''); // The letters left in the word
-        console.log(leftOverLetters)
         let letterStates = []; // The state of each letter
         
         // Loop over the letters in the word to get the letter states
         for (let i = 0; i < this.length; i++) {
             const letter = letters[i]; // Letter from input
-            const correct = this.word.word[i]; // Correct letter from word
+            const correct = this.formatted[i]; // Correct letter from word
 
             if (letter === correct) { // Checks if letter is correct
                 letterStates.push('correct');
@@ -153,7 +153,7 @@ export class Field {
 
         // Timout for triggering scenerio's
         setTimeout(_ => {
-            if (this.word.word === letters.join('')) { // The guess is correct
+            if (this.formatted === letters.join('')) { // The guess is correct
                 this.win(this.currentGuess + 1); // Win the game
             } else if (this.currentGuess + 1 == config.maxGuesses) { // The guess is incorrect and there are no more guesses left
                 this.lose(); // Trigger the lose scenario
