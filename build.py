@@ -36,7 +36,8 @@ if __name__ == "__main__":
             'level': elements[-2][0:-1],
             'method': elements[-3],
             'language': elements[-4],
-            'path': path.replace('\\', '/')
+            'path': path.replace('\\', '/'),
+            'full_name': elements[-4] + ' ' + elements[-3] + ' ' + elements[-2] + ' ' + elements[-1].split('.')[0]
         }
         files.append(file)
 

@@ -8,6 +8,9 @@ def build_game_page(file) -> str:
     :param file: The file object to build the page for.
     :return: The HTML code of the page.
     """
+
+    print(f" -> Building game page for '{file['full_name']}'")
+
     # Import the file
     wordList = read(file["path"], header=True, seperator=";")
 
