@@ -1,11 +1,14 @@
 import { Field } from './Field.js';
 import { Keyboard } from './Keyboard.js';
+import { shuffle } from './Utility.js';
 
 export class Game {
     #currentWordIndex = 0;
     
-    constructor(wordList) {
+    constructor(wordList, doShuffle = true) {
         this.words = wordList;
+
+        if (doShuffle) { this.words = shuffle(this.words) };
 
         this.field = new Field(this);
         this.keyboard = new Keyboard();
