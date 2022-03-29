@@ -14,6 +14,7 @@
 
     --border-width: 2px;
 
+    --border-none: var(--border-width) solid transparent;
     --border-empty: var(--border-width) solid #313131;
     --border-not-empty: var(--border-width) solid #4e4e4e;
 

@@ -44,9 +44,13 @@ def table(file) -> str:
 
     title = f"{title_method} {title_level} {title_year}"
 
+    # Get the play path
+    play_path = f"/{file['language']}/{file['method']}/{file['level']}/{file['year']}/{file['name'].replace('.csv', '.html')}"
+
     # Replace the template
     template = template.replace("{table_body}", content)
     template = template.replace("{title}", title)
+    template = template.replace("{play_path}", play_path)
 
     # Fix encoding errors
     template = fix_errors(template)

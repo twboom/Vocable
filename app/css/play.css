@@ -1,0 +1,37 @@
+div#play {
+    width: 40%;
+    margin: 16px auto;
+    text-align: center;
+}
+
+button#play-button {
+    background: linear-gradient(to right, var(--color-correct) 50%, var(--background-highlight) 50%);
+    background-size: 210%;
+    background-position: 100%;
+    outline: var(--border-none);
+    border: none;
+
+    padding: 8px;
+    
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease-in-out, outline 0.2s, transform 0.2s;
+}
+
+button#play-button:hover {
+    outline: var(--border-empty);
+    background-position: 0%;
+}
+
+button#play-button:active {
+    outline: var(--border-not-empty);
+    transform: scale(0.95);
+}
+
+a#play-link {
+    font-family: var(--font-big);
+    font-size: 32px;
+    text-decoration: none;
+}
