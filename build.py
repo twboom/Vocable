@@ -1,8 +1,9 @@
 import os
 from shutil import copyfile, copytree, rmtree
 
-from builder.game import build_game_page
-from builder.utility.export import export_game_page
+from builder.game import game as build_game
+from builder.table import table as build_table
+from builder.utility.export import game as export_game_page, table as export_table_page
 
 
 if __name__ == "__main__":
@@ -42,8 +43,11 @@ if __name__ == "__main__":
         files.append(file)
 
     for file in files:
-        html = build_game_page(file)
-        export_game_page(file, html)
+        game_html = build_game(file)
+        export_game_page(file, game_html)
+        table_html = build_table(file)
+        export_table_page(file, table_html)
+
 
     # Copy static files
     print('[*] Copying static files')

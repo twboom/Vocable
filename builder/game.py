@@ -2,7 +2,7 @@ from builder.utility.csv import read
 from builder.utility.encoding import fix_errors
 
 
-def build_game_page(file) -> str:
+def game(file) -> str:
     """
     Builds the game page for the given file.
     :param file: The file object to build the page for.
