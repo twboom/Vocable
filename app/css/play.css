@@ -11,7 +11,7 @@ button#play-button {
     outline: var(--border-none);
     border: none;
 
-    padding: 8px;
+    padding: 0;
     
     border-radius: 4px;
 
@@ -31,7 +31,9 @@ button#play-button:active {
 }
 
 a#play-link {
+    display: block;
     font-family: var(--font-big);
     font-size: 32px;
     text-decoration: none;
+    padding: 12px;
 }
