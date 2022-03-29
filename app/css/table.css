@@ -1,0 +1,15 @@
+table {
+    width: fit-content;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+    background-color: var(--background-highlight);
+}
+
+td {
+    border: 1px solid #747373;
+    text-align: center;
+    padding: 8px;
+}
