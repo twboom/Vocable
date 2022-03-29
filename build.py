@@ -47,6 +47,5 @@ if __name__ == "__main__":
 
     # Copy static files
     print('[*] Copying static files')
-    copytree('app/css', 'build/static/css')
     copytree('app/js', 'build/static/js')
     copyfile('app/config.js', 'build/static/config.js')
