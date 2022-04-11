@@ -27,6 +27,8 @@ if __name__ == "__main__":
         for name in files:
             paths.append(os.path.join(elements, name))
 
+    print(paths)
+
     # Get wordlist
     files = []
     for path in paths:
@@ -49,20 +51,8 @@ if __name__ == "__main__":
         export_table_page(file, table_html)
 
     
-    def list_files(startpath):
-        for root, dirs, files in os.walk(startpath):
-            level = root.replace(startpath, '').count(os.sep)
-            indent = ' ' * 4 * (level)
-            print('{}{}/'.format(indent, os.path.basename(root)))
-            subindent = ' ' * 4 * (level + 1)
-            for f in files:
-                print('{}{}'.format(subindent, f))
-
-    
 
     # Copy static files
     print('[*] Copying static files')
     copytree('app/js', 'build/static/js')
     copyfile('app/config.js', 'build/static/config.js')
-    list_files('build')
-    list_files('data')
