@@ -29,6 +29,7 @@ def game(file) -> str:
     # Replace the template
     template = template.replace("{words}", str(wordList))
     template = template.replace("{title}", title)
+    template = template.replace("{word_list_name}", title.lower().replace(" ", "_"))
 
     # Fix encoding errors
     template = fix_errors(template)
