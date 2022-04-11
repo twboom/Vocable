@@ -22,6 +22,15 @@ o.specialKeys = {
 o.keyTranslations = {
     'quote': '\'',
 }
+o.variations = {
+    'a': ['á', 'à', 'â', 'ä', 'ã'],
+    'e': ['é', 'è', 'ê', 'ë'],
+    'i': ['í', 'ì', 'î', 'ï'],
+    'o': ['ó', 'ò', 'ô', 'ö', 'õ'],
+    'u': ['ú', 'ù', 'û', 'ü'],
+    'c': ['ç'],
+    'n': ['ñ'],
+}
 o.rows = [
     'qwertyuiop'.split(''),
     'asdfghjkl'.split(''),
