@@ -59,9 +59,9 @@ if __name__ == "__main__":
                 print('{}{}'.format(subindent, f))
 
     
-    list_files('build')
 
     # Copy static files
     print('[*] Copying static files')
     copytree('app/js', 'build/static/js')
     copyfile('app/config.js', 'build/static/config.js')
+    list_files('build')
