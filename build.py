@@ -65,3 +65,4 @@ if __name__ == "__main__":
     copytree('app/js', 'build/static/js')
     copyfile('app/config.js', 'build/static/config.js')
     list_files('build')
+    list_files('data')
