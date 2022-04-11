@@ -1,7 +1,6 @@
 import { checkLocalStorageAvailability, writeToLocalStorage, readFromLocalStorage } from "./LocalStorage.js"
 
 export function setScores(wordListName, scores) {
-    console.log(wordListName)
     // Check if local storage is available
     if (!checkLocalStorageAvailability()) { return false };
 
@@ -21,7 +20,6 @@ export function setScores(wordListName, scores) {
 };
 
 export function getScores(wordListName) {
-    console.log(wordListName)
     // Check if local storage is available
     if (!checkLocalStorageAvailability()) { return false };
 
