@@ -1,12 +1,17 @@
 import { Field } from './Field.js';
 import { Keyboard } from './Keyboard.js';
-import { shuffle, getRandomScore, getRandomFromScore, getMinScore } from './Utility.js';
+import { getRandomScore, getRandomFromScore, getMinScore } from './Utility.js';
+import { setScores, getScores } from './Progress.js';
 
 export class Game {
     scores = {}; // Object with the scores per word
     
-    constructor(wordList, doShuffle = true, scoreList = {}) {
+    constructor(wordList, wordListName) {
         this.words = wordList;
+        this.name = wordListName;
+
+        // Get the scores from local storage
+        const scoreList = getScores(this.name);
 
         // Add the words to the scores object
         for (let word of wordList) {
@@ -15,8 +20,6 @@ export class Game {
 
         // Mix with the given score list
         this.scores = { ...this.scores, ...scoreList };
-
-        console.log(this.scores)
         
         this.field = new Field(this);
         this.keyboard = new Keyboard();
@@ -30,6 +33,7 @@ export class Game {
     
     // Go to the next word
     next() {
+        console.log(this.scores);
         // Get a new score to choose a word from
         const randomScore = getRandomScore(getMinScore(this.scores), 0.1);
         
@@ -45,7 +49,7 @@ export class Game {
     win(guesses) {
         // TODO
         console.log(`Won in ${guesses} guesses`);
-        this.scores[this.field.word.word] = guesses;
+        this.updateScores(guesses);
         this.next();
     };
     
@@ -53,7 +57,13 @@ export class Game {
     lose() {
         // TODO
         console.log(`Lost, word was ${this.field.word.word}`);
-        this.scores[this.field.word.word] = 0;
+        this.updateScores(0);
         this.next();
+    };
+
+    // Update the scores
+    updateScores(guesses) {
+        this.scores[this.field.word.word] = guesses;
+        setScores(this.name, this.scores);
     };
 };

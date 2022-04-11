@@ -31,11 +31,12 @@
 
     <script type="module">
         const words = {words};
+        const wordListName = "{wordListName}";
 
         import { Game } from '/static/js/game.js';
         
         // Initialize the game
-        const game = new Game(words);
+        const game = new Game(words, wordListName);
 
         // Start the game
         game.start();
