@@ -219,8 +219,8 @@ export class Field {
         const letterElement = letterContainer.firstChild; // The letter element
 
         // Update the letter
-        letterContainer.dataset.letter = letter;
-        letterElement.innerHTML = letter;
+        letterContainer.dataset.letter = letter; // Update data attribute
+        letterElement.innerHTML = letter; // Set the letter to the new letter
     };
 
     // Clear the guess until pause
