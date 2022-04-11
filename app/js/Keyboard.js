@@ -20,7 +20,6 @@ export class Keyboard {
             // Send the key to the field
             this.#field.input(key);
         };
-        console.log(key)
     };
 
     // Handles the click events
