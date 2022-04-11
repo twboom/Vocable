@@ -48,4 +48,4 @@ export function getRandomFromScore(scoreList, score) {
 
     // Return a random word
     return words[Math.floor(Math.random() * words.length)];
-}
+};
