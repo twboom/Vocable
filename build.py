@@ -32,7 +32,7 @@ if __name__ == "__main__":
     for path in paths:
         elements = path.split('\\')
         file = {
-            'name': elements[-1],
+            'name': elements[-1].split('.')[0],
             'year': elements[-2][-1],
             'level': elements[-2][0:-1],
             'method': elements[-3],

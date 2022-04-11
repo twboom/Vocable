@@ -15,7 +15,7 @@ def game(file, html):
 
     # Create the folder
     os.makedirs(path, exist_ok=True)
-    file_name = file["name"].replace(".csv", ".html")
+    file_name = file["name"] + '.html'
 
     # Include CSS
     html = include_css(html)
@@ -37,7 +37,7 @@ def table(file, html):
 
     # Create the folder
     os.makedirs(path, exist_ok=True)
-    file_name = file["name"].replace(".csv", ".html")
+    file_name = file["name"] + '.html'
 
     # Include CSS
     html = include_css(html)
