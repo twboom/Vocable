@@ -43,6 +43,11 @@ export class Keyboard {
             return
         };
 
+        // Ignore if control is pressed
+        if (evt.ctrlKey) {
+            return;
+        };
+
         // Update key if it is a dead key
         if (key === 'dead') {
             key = evt.code.toLowerCase();
