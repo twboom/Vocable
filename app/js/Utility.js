@@ -15,3 +15,16 @@ export function shuffle(array) {
   
     return array;
 }
+
+export function getRandomScore(maxScore, lowScoreFactor = 0.1) {
+    // Loop until a random score is found
+    for (let i = 0; i < maxScore; i++) {
+        // If the random score is below the low score factor
+        if (Math.random() < lowScoreFactor) {
+            return i;
+        };
+    };
+
+    // If no score is found, return the max score
+    return maxScore;
+};
