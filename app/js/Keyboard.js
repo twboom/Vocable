@@ -3,6 +3,7 @@ import { config } from '../config.js';
 export class Keyboard {
     #field = null;
     #keyDown = new Set();
+    #popup = null;
 
     constructor() {
         this.keyboard = document.getElementById('keyboard');
@@ -20,6 +21,16 @@ export class Keyboard {
             // Send the key to the field
             this.#field.input(key);
         };
+    };
+
+    // Handle popup click
+    handlePopupClick(evt) {
+        // Get the key
+        const key = evt.target.dataset.key.toLowerCase();
+
+        // Update the letter
+        const updateLetterIndex = this.#field.currentLetter - 1; // Get the index of the letter to be updated
+        this.#field.updateLetter(updateLetterIndex, key); // Update the letter
     };
     
     // Handles the click events
@@ -57,13 +68,49 @@ export class Keyboard {
             key = config.keyTranslations[key];
         };
         
-        // Check if the key is allowed
-        if (config.allowedKeys.includes(key)) {
+        // Check if the key is allowed and not already pressed
+        if (config.allowedKeys.includes(key) && !this.#keyDown.has(key)) {
             // Add the key to the set
             this.#keyDown.add(key);
             
             // Send the key to the field
             this.send(key);
+        } else if (this.#keyDown.has(key)) {
+            // Check for letter variations
+            if (config.variations[key]) {
+                // Return if popup is exists
+                if (this.#popup) { return };
+
+                // Get the letter variations
+                const variations = config.variations[key];
+
+                // Create popup with letter variations
+                const popup = document.createElement('div');
+                popup.id = 'variation-popup';
+
+                const keyElement = document.querySelector(`[data-key="${key}"]`);
+                const keyPosition = keyElement.getBoundingClientRect();
+
+                popup.style.top = `${keyPosition.top}px`;
+                popup.style.left = `${keyPosition.left}px`;
+
+                // Loop over the variations
+                for (let i = 0; i < variations.length; i++) {
+                    // Create a button for each variation
+                    const variation = document.createElement('button'); // Create the element
+                    variation.classList.add('variation'); // Add the class
+                    variation.dataset.key = variations[i]; // Add the dataset data
+                    variation.innerText = variations[i]; // Add the inner text
+                    variation.addEventListener('click', this.handlePopupClick.bind(this)); // Add the click event handler
+                    popup.appendChild(variation); // Append the element to the popup
+                };
+
+                // Add the popup to the page
+                document.body.appendChild(popup);
+
+                // Update the popup state
+                this.#popup = key;
+            };
         };
     };
     
@@ -74,6 +121,12 @@ export class Keyboard {
         
         // Remove the key from the set
         this.#keyDown.delete(key);
+
+        // If popup is open, remove it
+        if (this.#popup) {
+            document.getElementById('variation-popup').remove();
+            this.#popup = null;
+        };
     };
     
     // Generates the keyboard

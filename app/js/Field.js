@@ -211,6 +211,18 @@ export class Field {
         letterElement.innerHTML = '';
     };
 
+    // Updates a letter from index
+    updateLetter(index, letter) {
+        // Get the letter
+        const guess = document.getElementsByClassName('guess')[this.currentGuess]; // The guess
+        const letterContainer = guess.children[index]; // The letter container
+        const letterElement = letterContainer.firstChild; // The letter element
+
+        // Update the letter
+        letterContainer.dataset.letter = letter;
+        letterElement.innerHTML = letter;
+    };
+
     // Clear the guess until pause
     clear() {
         // Get the current letter

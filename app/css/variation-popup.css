@@ -1,0 +1,22 @@
+div#variation-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-0%, -110%);
+    background-color: var(--background-highlight);
+    padding: 8px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+button.variation {
+    outline: none;
+    border: none;
+    background-color: var(--background-color);
+    color: var(--text);
+    font-family: var(--font-letter);
+    font-size: 1.2em;
+    padding: 8px;
+    margin: 2px;
+    border-radius: 4px;
+}
