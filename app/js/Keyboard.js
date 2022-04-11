@@ -20,6 +20,7 @@ export class Keyboard {
             // Send the key to the field
             this.#field.input(key);
         };
+        console.log(key)
     };
 
     // Handles the click events
@@ -35,6 +36,13 @@ export class Keyboard {
     handleKeyDown(evt) {
         // Get the key
         let key = evt.key.toLowerCase();
+
+        // Check if key is control space
+        if (key === 'backspace' && evt.ctrlKey) {
+            key = 'clear';
+            this.send(key);
+            return
+        };
 
         // Update key if it is a dead key
         if (key === 'dead') {

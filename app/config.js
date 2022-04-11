@@ -10,6 +10,7 @@ o.keys = {
     'space': 'space',
     'backspace': 'backspace',
     'delete': 'delete',
+    'clear': 'clear',
 }
 o.inputKeys = [o.letters, o.characters].flat();
 o.allowedKeys = [o.letters, o.characters, Object.values(o.keys)].flat()

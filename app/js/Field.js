@@ -29,6 +29,10 @@ export class Field {
 
     // Input from the keyboard
     input(key) {
+        // Clear to last letter
+        if (key == 'clear') {
+            this.clear();
+        };
         // Check if the key is a letter or a special key
         if (config.inputKeys.includes(key)) {
             if (key === ' ') { key = '_' }; // Replace space with underscore
@@ -205,6 +209,28 @@ export class Field {
         // Update the letter
         letterContainer.removeAttribute('data-letter');
         letterElement.innerHTML = '';
+    };
+
+    // Clear the guess until pause
+    clear() {
+        // Get the current letter
+        const guess = document.getElementsByClassName('guess')[this.currentGuess]; // The guess
+        const letterElements = guess.children; // The letters in the guess
+        let currentLetter = letterElements[this.currentLetter - 1]; // The current letter
+        
+        while(currentLetter !== undefined && currentLetter.innerText !== '_' && this.currentLetter >= 0) {
+            this.removeLetter();
+            if (this.currentLetter >=1) {
+                currentLetter = letterElements[this.currentLetter - 1];
+            } else {
+                currentLetter = letterElements[this.currentLetter];
+                return;
+            };
+        };
+
+        if (currentLetter !== undefined && currentLetter.innerText == '_') {
+            this.removeLetter();
+        };
     };
 
     // Win scenario
