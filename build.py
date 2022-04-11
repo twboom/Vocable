@@ -24,7 +24,6 @@ if __name__ == "__main__":
     print('[*] Creating wordlist')
     paths = []
     for elements, subdirs, files in os.walk('data\wordlists'):
-        print(files)
         for name in files:
             paths.append(os.path.join(elements, name))
 
