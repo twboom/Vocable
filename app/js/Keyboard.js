@@ -7,12 +7,12 @@ export class Keyboard {
     constructor() {
         this.keyboard = document.getElementById('keyboard');
     }
-
+    
     // Attach a field to the keyboard
     attach(field) {
         this.#field = field;
     };
-
+    
     // Send the input to the field
     send(key) {
         // Check if the key is allowed
@@ -21,7 +21,7 @@ export class Keyboard {
             this.#field.input(key);
         };
     };
-
+    
     // Handles the click events
     handleClick(evt) {
         // Get the key
@@ -30,24 +30,24 @@ export class Keyboard {
         // Send the key to the field
         this.send(key);
     };
-
+    
     // Handles the keydown events
     handleKeyDown(evt) {
         // Get the key
         let key = evt.key.toLowerCase();
-
+        
         // Check if key is control space
         if (key === 'backspace' && evt.ctrlKey) {
             key = 'clear';
             this.send(key);
             return
         };
-
+        
         // Ignore if control is pressed
         if (evt.ctrlKey) {
             return;
         };
-
+        
         // Update key if it is a dead key
         if (key === 'dead') {
             key = evt.code.toLowerCase();
@@ -56,22 +56,22 @@ export class Keyboard {
         if (config.keyTranslations[key]) {
             key = config.keyTranslations[key];
         };
-
+        
         // Check if the key is allowed
         if (config.allowedKeys.includes(key)) {
             // Add the key to the set
             this.#keyDown.add(key);
-
+            
             // Send the key to the field
             this.send(key);
         };
     };
-
+    
     // Handles the keyup events
     handleKeyUp(evt) {
         // Get the key
         const key = evt.key.toLowerCase();
-
+        
         // Remove the key from the set
         this.#keyDown.delete(key);
     };
@@ -83,7 +83,7 @@ export class Keyboard {
             // Create a new row
             const row = document.createElement('div');
             row.classList.add('row');
-
+            
             // Loop over the letters in the row
             for (let j = 0; j < config.rows[i].length; j++) {
                 // Get the key content

@@ -28,12 +28,15 @@ export class Game {
     
     // Start the game
     start() {
+        // Generate the keyboard
+        this.keyboard.generate();
+
+        // Go the the first word
         this.next();
     };
     
     // Go to the next word
     next() {
-        console.log(this.scores);
         // Get a new score to choose a word from
         const randomScore = getRandomScore(getMinScore(this.scores), 0.1);
         
