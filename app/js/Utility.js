@@ -14,7 +14,8 @@ export function shuffle(array) {
     }
   
     return array;
-}
+};
+
 
 export function getRandomScore(maxScore, lowScoreFactor = 0.1) {
     // Loop until a random score is found
@@ -24,15 +25,26 @@ export function getRandomScore(maxScore, lowScoreFactor = 0.1) {
             return i;
         };
     };
-
+    
     // If no score is found, return the max score
+    return maxScore;
+};
+
+export function getMinScore(scoreList) {
+    // Get the max score
+    let maxScore = 0;
+    for (let score in scoreList) {
+        if (scoreList[score] < maxScore) {
+            maxScore = scoreList[score];
+        };
+    };
+    
     return maxScore;
 };
 
 export function getRandomFromScore(scoreList, score) {
     // Get all the applicable words
     const words = Object.keys(scoreList).filter(word => scoreList[word] === score);
-    console.log(words)
 
     // Return a random word
     return words[Math.floor(Math.random() * words.length)];
