@@ -32,6 +32,26 @@ export class Keyboard {
         const updateLetterIndex = this.#field.currentLetter - 1; // Get the index of the letter to be updated
         this.#field.updateLetter(updateLetterIndex, key); // Update the letter
     };
+
+    // Handle keyboard numbers
+    handleNumber(evt) {
+        // Check if the popup is open
+        if (!this.#popup) { return };
+
+        // Get the number
+        const number = parseInt(evt.key);
+
+        // Click the corresponding letter variation
+        const popup = document.getElementById('variation-popup'); // The popup
+        const variations = popup.children; // The variations
+        const variation = variations[number - 1]; // The variation
+
+        // Check if the variation exists
+        if (variation) {
+            // Click the variation
+            variation.click();
+        };
+    };
     
     // Handles the click events
     handleClick(evt) {
@@ -56,6 +76,13 @@ export class Keyboard {
         
         // Ignore if control is pressed
         if (evt.ctrlKey) {
+            return;
+        };
+
+        // Check if key is a number
+        if (config.numberList.includes(key)) {
+            // Handle the number with number handler
+            this.handleNumber(evt);
             return;
         };
         
