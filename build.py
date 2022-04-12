@@ -42,7 +42,6 @@ if __name__ == "__main__":
             'path': path.replace('\\', '/'),
             'full_name': elements[-4] + ' ' + elements[-3] + ' ' + elements[-2] + ' ' + elements[-1].split('.')[0]
         }
-        print(file)
         files.append(file)
 
     for file in files:
