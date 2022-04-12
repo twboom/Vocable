@@ -33,7 +33,7 @@ def table(file, html):
     :param html: The HTML code of the page.
     """
     # Get the correct path
-    path = f"build/list/{file['language']}/{file['method']}/{file['level']}/{file['year']}"
+    path = f"build/list/{file['language']}/{file['method'].replace('_', '-')}/{file['level']}/{file['year']}/{file['direction']}"
 
     # Create the folder
     os.makedirs(path, exist_ok=True)
