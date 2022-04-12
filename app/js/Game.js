@@ -2,6 +2,7 @@ import { Field } from './Field.js';
 import { Keyboard } from './Keyboard.js';
 import { getRandomScore, getRandomFromScore, getMinScore, getMaxScore } from './Utility.js';
 import { setScores, getScores } from './Progress.js';
+import { config } from '../config.js';
 
 export class Game {
     scores = {}; // Object with the scores per word
@@ -15,7 +16,7 @@ export class Game {
 
         // Add the words to the scores object
         for (let word of wordList) {
-            this.scores[word.word] = 0;
+            this.scores[word.word] = config.maxGuesses + 1;
         };
 
         // Mix with the given score list
@@ -66,7 +67,7 @@ export class Game {
     lose() {
         // TODO
         console.log(`Lost, word was ${this.field.word.word}`);
-        this.updateScores(0);
+        this.updateScores(config.maxGuesses + 1);
         this.next();
     };
 

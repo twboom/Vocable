@@ -1,4 +1,5 @@
 import { config } from '../config.js';
+import { checkWord } from './Utility.js';
 
 export class Field {
     currentGuess = 0; // Counter for the current guess (zero-indexed)
@@ -111,28 +112,10 @@ export class Field {
         // TODO: DIsplay not all letters are filled
         if (!allLetters) { return };
 
-        // Display the results
-
-        let leftOverLetters = this.word.word.split(''); // The letters left in the word
-        let letterStates = []; // The state of each letter
+        // Get the results
+        const letterStates = checkWord(this.word.word, letters);
         
-        // Loop over the letters in the word to get the letter states
-        for (let i = 0; i < this.length; i++) {
-            const letter = letters[i]; // Letter from input
-            const correct = this.formatted[i]; // Correct letter from word
-
-            if (letter === correct) { // Checks if letter is correct
-                letterStates.push('correct');
-                leftOverLetters.splice(leftOverLetters.indexOf(letter), 1);
-            } else if (leftOverLetters.includes(letter)) { // Checks if letter is left in word
-                letterStates.push('contains');
-                // Remove letter from left over letters
-                leftOverLetters.splice(leftOverLetters.indexOf(letter), 1);
-            } else { // Letter is not in word
-                letterStates.push('wrong');
-            };
-        };
-
+        // Display the results
         // Add the states to the elements
         let currentLetter = 0;
         const totalDelay =  config.delay * letters.length + config.defaultDelay;

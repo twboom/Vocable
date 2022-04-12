@@ -53,3 +53,29 @@ export function getRandomFromScore(scoreList, score) {
     // Return a random word
     return words[Math.floor(Math.random() * words.length)];
 };
+
+export function checkWord(word, input) {
+    let leftOverLetters = word.split(''); // The letters left in the word
+    let letterStates = []; // The state of each letter
+    
+    // Loop over the letters in the word to get the letter states
+    for (let i = 0; i < input.length; i++) {
+        const letter = input[i]; // Letter from input
+        const correct = word[i].replace(' ', '_'); // Correct letter from word
+
+        console.log(letter, correct)
+
+        if (letter === correct) { // Checks if letter is correct
+            letterStates.push('correct');
+            leftOverLetters.splice(leftOverLetters.indexOf(letter), 1);
+        } else if (leftOverLetters.includes(letter)) { // Checks if letter is left in word
+            letterStates.push('contains');
+            // Remove letter from left over letters
+            leftOverLetters.splice(leftOverLetters.indexOf(letter), 1);
+        } else { // Letter is not in word
+            letterStates.push('wrong');
+        };
+    };
+
+    return letterStates;
+};
