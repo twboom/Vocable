@@ -42,8 +42,9 @@ def table(file) -> str:
     title_level = file["level"].upper()
     title_year = file["year"]
     title_name = file["name"].upper()
+    title_direction = file["direction"].upper()
 
-    title = f"{title_method} {title_level} {title_year} {title_name}"
+    title = f"{title_method} {title_level} {title_year} {title_name} ({title_direction})"
 
     # Get the play path
     play_path = f"/{file['language']}/{file['method']}/{file['level']}/{file['year']}/{file['name'].replace('.csv', '.html')}"

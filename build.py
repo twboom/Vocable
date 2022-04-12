@@ -34,13 +34,15 @@ if __name__ == "__main__":
         elements = path.split('\\')
         file = {
             'name': elements[-1].split('.')[0],
-            'year': elements[-2][-1],
-            'level': elements[-2][0:-1],
-            'method': elements[-3],
-            'language': elements[-4],
+            'year': elements[-3][-1],
+            'level': elements[-3][0:-1],
+            'direction': elements[-2],
+            'method': elements[-4],
+            'language': elements[-5],
             'path': path.replace('\\', '/'),
             'full_name': elements[-4] + ' ' + elements[-3] + ' ' + elements[-2] + ' ' + elements[-1].split('.')[0]
         }
+        print(file)
         files.append(file)
 
     for file in files:

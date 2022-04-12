@@ -23,8 +23,9 @@ def game(file) -> str:
     title_level = file["level"].upper()
     title_year = file["year"]
     title_name = file["name"].upper()
+    title_direction = file["direction"].upper()
 
-    title = f"{title_method} {title_level} {title_year} {title_name}"
+    title = f"{title_method} {title_level} {title_year} {title_name} ({title_direction})"
 
     # Replace the template
     template = template.replace("{words}", str(wordList))
