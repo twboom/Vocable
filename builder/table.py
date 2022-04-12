@@ -38,7 +38,7 @@ def table(file) -> str:
         template = f.read()
 
     # Build the title
-    title_method = file["method"].capitalize()
+    title_method = file["method"].replace("_", " ").title()
     title_level = file["level"].upper()
     title_year = file["year"]
     title_name = file["name"].upper()
@@ -47,7 +47,7 @@ def table(file) -> str:
     title = f"{title_method} {title_level} {title_year} {title_name} ({title_direction})"
 
     # Get the play path
-    play_path = f"/{file['language']}/{file['method']}/{file['level']}/{file['year']}/{file['name'].replace('.csv', '.html')}"
+    play_path = f"/{file['language']}/{file['method'].replace('_', '-')}/{file['level']}/{file['year']}/{file['name'].replace('.csv', '.html')}"
 
     # Replace the template
     template = template.replace("{table_body}", content)

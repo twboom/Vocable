@@ -19,7 +19,7 @@ def game(file) -> str:
         template = f.read()
 
     # Build the title
-    title_method = file["method"].capitalize()
+    title_method = file["method"].replace("_", " ").title()
     title_level = file["level"].upper()
     title_year = file["year"]
     title_name = file["name"].upper()
