@@ -13,4 +13,5 @@ def fix_errors(str) -> str:
     str = str.replace("Ã–", "Ö")
     str = str.replace("Ãœ", "Ü")
     str = str.replace("ÃŸ", "ß")
+    str = str.replace("Ã©", "é")
     return str
