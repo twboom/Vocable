@@ -1,6 +1,6 @@
 import { Field } from './Field.js';
 import { Keyboard } from './Keyboard.js';
-import { getRandomScore, getRandomFromScore, getMinScore } from './Utility.js';
+import { getRandomScore, getRandomFromScore, getMinScore, getMaxScore } from './Utility.js';
 import { setScores, getScores } from './Progress.js';
 
 export class Game {
@@ -38,7 +38,7 @@ export class Game {
     // Go to the next word
     next() {
         // Get a new score to choose a word from
-        const randomScore = getRandomScore(getMinScore(this.scores), 0.1);
+        const randomScore = getRandomScore(getMaxScore(this.scores), getMinScore(this.scores), 0.1);
         
         // Get a new word
         const newWord = getRandomFromScore(this.scores, randomScore); // Get the word

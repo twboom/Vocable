@@ -17,11 +17,11 @@ export function shuffle(array) {
 };
 
 
-export function getRandomScore(maxScore, lowScoreFactor = 0.1) {
+export function getRandomScore(maxScore, minScore, lowScoreFactor = 0.1) {
     // Loop until a random score is found
     for (let i = 0; i < maxScore; i++) {
         // If the random score is below the low score factor
-        if (Math.random() < lowScoreFactor) {
+        if (Math.random() < lowScoreFactor && i >= minScore) {
             return i;
         };
     };
@@ -31,14 +31,18 @@ export function getRandomScore(maxScore, lowScoreFactor = 0.1) {
 };
 
 export function getMinScore(scoreList) {
-    // Get the max score
-    let maxScore = 0;
-    for (let score in scoreList) {
-        if (scoreList[score] < maxScore) {
-            maxScore = scoreList[score];
-        };
-    };
+    const scores = Object.values(scoreList); // Get all scores
+    const minScore = Math.min(...scores);// Get the min score
     
+    // Return the value
+    return minScore;
+};
+
+export function getMaxScore(scoreList) {
+    const scores = Object.values(scoreList); // Get all scores
+    const maxScore = Math.max(...scores);// Get the max score
+
+    // Return the value
     return maxScore;
 };
 
