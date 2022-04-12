@@ -21,6 +21,7 @@ o.specialKeys = {
     [o.keys.delete]: 'remove',
     [o.keys.enter]: 'play',
 }
+o.repeatableKeys = [o.keys.backspace, o.keys.delete, o.keys.clear]
 o.keyTranslations = {
     'quote': '\'',
 }

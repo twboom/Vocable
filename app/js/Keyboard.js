@@ -98,7 +98,10 @@ export class Keyboard {
         // Check if the key is allowed and not already pressed
         if (config.allowedKeys.includes(key) && !this.#keyDown.has(key)) {
             // Add the key to the set
-            this.#keyDown.add(key);
+            // Only if key can't be repeated
+            if (!config.repeatableKeys.includes(key)) {
+                this.#keyDown.add(key);
+            };
             
             // Send the key to the field
             this.send(key);
