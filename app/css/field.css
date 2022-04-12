@@ -65,6 +65,11 @@ p.letter:empty::before {
     opacity: 0
 }
 
+/* Underline upppercase */
+p.letter[data-uppercase=true] {
+    text-decoration: underline;
+}
+
 /* Animation on letter add */
 div.letter-container[data-letter] {
     animation: add_letter 100ms ease-in-out;

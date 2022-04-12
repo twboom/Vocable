@@ -94,13 +94,19 @@ export class Keyboard {
         if (config.keyTranslations[key]) {
             key = config.keyTranslations[key];
         };
-        
+
+        // Check if shift is pressed
+        if (evt.shiftKey) {
+            // Capitalize the key
+            key = key.toUpperCase();
+        };
+
         // Check if the key is allowed and not already pressed
         if (config.allowedKeys.includes(key) && !this.#keyDown.has(key)) {
             // Add the key to the set
             // Only if key can't be repeated
             if (!config.repeatableKeys.includes(key)) {
-                this.#keyDown.add(key);
+                this.#keyDown.add(key.toLowerCase());
             };
             
             // Send the key to the field

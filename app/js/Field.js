@@ -183,6 +183,13 @@ export class Field {
         letterContainer.dataset.letter = letter;
         letterElement.innerHTML = letter;
 
+        // Check if letter is uppercase
+        if (letter.toUpperCase() === letter) {
+            letterElement.dataset.uppercase = true;
+        } else {
+            letterElement.dataset.uppercase = false;
+        };
+
         // Update the counters
         // Only if the letter is not the last one
         if (!(this.currentLetter === this.length)) {
@@ -209,6 +216,9 @@ export class Field {
         // Update the letter
         letterContainer.removeAttribute('data-letter');
         letterElement.innerHTML = '';
+
+        // Reset uppercase state
+        letterElement.removeAttribute('data-uppercase');
     };
 
     // Updates a letter from index

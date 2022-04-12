@@ -3,6 +3,7 @@ const o = {};
 o.maxGuesses = 6
 o.alphabet = 'abcdefghijklmnopqrstuvwxyz'
 o.letters = o.alphabet.split('')
+o.upperCase = o.alphabet.toUpperCase().split('')
 o.numberList = '1234567890'
 o.numbers = o.numberList.split('')
 o.charactersList = `-/ '!()`
@@ -14,8 +15,8 @@ o.keys = {
     'delete': 'delete',
     'clear': 'clear',
 }
-o.inputKeys = [o.letters, o.characters].flat();
-o.allowedKeys = [o.letters, o.characters, Object.values(o.keys)].flat()
+o.inputKeys = [o.letters, o.upperCase, o.characters].flat();
+o.allowedKeys = [o.letters, o.upperCase, o.characters, Object.values(o.keys)].flat()
 o.specialKeys = {
     [o.keys.backspace]: 'remove',
     [o.keys.delete]: 'remove',
