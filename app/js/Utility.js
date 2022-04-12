@@ -55,27 +55,45 @@ export function getRandomFromScore(scoreList, score) {
 };
 
 export function checkWord(word, input) {
-    let leftOverLetters = word.split(''); // The letters left in the word
-    let letterStates = []; // The state of each letter
+    word = word.replace(' ', '_'); // Replace spaces with underscores
+    let leftOverLetters = word.split(''); // Form an array of the correct letters
+    let letterStates = Array(word.length).fill(null); // Array to hold the letter states
+
+    console.log(word, leftOverLetters, letterStates);
     
     // Loop over the letters in the word to get the letter states
+    // First loop is to get the correct letter states
     for (let i = 0; i < input.length; i++) {
         const letter = input[i]; // Letter from input
-        const correct = word[i].replace(' ', '_'); // Correct letter from word
-
-        console.log(letter, correct)
-
-        if (letter === correct) { // Checks if letter is correct
-            letterStates.push('correct');
+        const correct = word[i]; // Correct letter from word
+        
+        // If the letter is correct
+        if (letter === correct) {
+            letterStates[i] = 'correct';
             leftOverLetters.splice(leftOverLetters.indexOf(letter), 1);
-        } else if (leftOverLetters.includes(letter)) { // Checks if letter is left in word
-            letterStates.push('contains');
-            // Remove letter from left over letters
-            leftOverLetters.splice(leftOverLetters.indexOf(letter), 1);
-        } else { // Letter is not in word
-            letterStates.push('wrong');
         };
     };
+    
+    // Second pass is to get the left over letter states
+    for (let i = 0; i < input.length; i++) {
+        const letter = input[i]; // Letter from input
 
-    return letterStates;
+        // Check if letter is not already correct
+        if (letterStates[i] === 'correct') { continue };
+
+        console.log(letter, leftOverLetters);
+        
+        // If the letter is left over
+        if (leftOverLetters.includes(letter)) {
+            letterStates[i] = 'contains';
+            // Remove letter from left over letters
+            leftOverLetters.splice(leftOverLetters.indexOf(letter), 1);
+        };
+    };
+    
+    // Third pass is to get the wrong letter states
+    letterStates = letterStates.map(state => { if (state === null) { return 'wrong'; } else { return state }; });
+    
+    // Return the letterstates array
+    return letterStates
 };
