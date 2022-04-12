@@ -44,6 +44,12 @@ export class Game {
         const newWord = getRandomFromScore(this.scores, randomScore); // Get the word
         const newWordIndex = this.words.findIndex(word => word.word === newWord); // Get the index of the word
         
+        // If new word is not found, try again
+        if (newWordIndex === -1) {
+            this.next();
+            return;
+        };
+
         // Update the field with the new word
         this.field.update(this.words[newWordIndex]);
     };
